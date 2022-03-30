@@ -1,0 +1,39 @@
+@startuml
+Cliente "1" -- "1" CtaCte
+Usuario -> "1" Documento
+Persona "1"--> "0..*" Perro
+
+/'Asociacion'/
+class Cliente{
+-nombre:string
+-cta:Ctacte
+}
+
+class CtaCte{
+-saldo:double
+-cliente:Cliente
+}
+
+
+/'Asociacion direccional'/
+class Usuario{
+-nombre:string
+-doc:Documento
+}
+
+class Documento{
+-nro:int
+-tipo:TipoDoc
+}
+
+
+/'Asociacion multidireccional con multiplicidad *(n)'/
+class Persona{
+-nombre:string
+-masco:List<Perro>
+}
+class Perro{
+-nombre:string
+-dueño:Persona
+}
+@enduml
