@@ -37,8 +37,8 @@ class Perro{
 }
 /'Agregacion y composicion'/
 Smartphone o- Bateria
-Smartphone o- MemoryCard
-Smartphone *-- Mensaje
+Smartphone  o- "agregacion" MemoryCard /'agregacion'/
+Smartphone "compocicion" *-- Mensaje /'compocicion'/
 Smartphone *-- Software
 
 class Smartphone{}
