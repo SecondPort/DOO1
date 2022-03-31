@@ -1,0 +1,28 @@
+@startuml
+class Proveedor {
+    -razonSocial:String
+    -CUIT:String
+    -condicionIVA:String
+    -domicilio:String
+    -localidad:String
+    -telefono:String
+    -fax:String
+}
+
+class Articulo {
+    -nombre:String
+    -descripcion:String
+    -unidadMedida:String
+    -precioUnitario:Double
+}
+
+class Pedido {
+    -fecha:Date
+    -proveedor:Proveedor
+    -articulos:Articulo[]
+}
+
+Pedido "1" -- "*" Articulo
+Pedido "1" -- "1" Proveedor
+
+@enduml

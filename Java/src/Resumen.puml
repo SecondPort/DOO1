@@ -35,6 +35,8 @@ class Perro{
 -nombre:string
 -dueño:Persona
 }
+
+
 /'Agregacion y composicion'/
 Smartphone o- Bateria
 Smartphone  o- "agregacion" MemoryCard /'agregacion'/
@@ -46,5 +48,18 @@ class Bateria{}
 class MemoryCard{}
 class Mensaje{}
 class Software{}
+
+
+/'Realizacion'/
+
+class Auto{
+-marca:string
+}
+interface Cambios{
+-subir:void
+-bajar:void
+}
+
+
 
 @enduml
