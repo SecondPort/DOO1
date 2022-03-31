@@ -35,6 +35,9 @@ class Domicilio {
     +void Mostrar()
 }
 
+package Ejercicio1 {
+}
+
 Pedido "1" -- "*" Articulo
 Pedido "1" -- "1" Proveedor
 Domicilio -- "1" Localidad

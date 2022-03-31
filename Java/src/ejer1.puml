@@ -1,0 +1,51 @@
+@startuml
+
+class Proveedores{
+	-razonSocial:String
+	-CUIT:String
+	-condicionIVA:String
+	-domicilio:String
+	-localidad:String
+	-telefono:String
+	-fax:String
+
+}
+
+class Articulos{
+	-nombre:String
+	-descripcion:String
+	-unidadMedida:String
+
+
+}
+
+class Pedidos{
+	-articulos:Articulos
+	-proveedores:Proveedores
+
+
+}
+class Localidad{
+	-nombre:String
+	-codigoPostal:String
+
+
+}
+
+class Domicilio{
+	-calle:String
+	-numero:String
+	-departamento:String
+	-piso:String
+	-localidad:Localidad
+
+
+}
+Proveedores "1" -- "*" Articulos
+Proveedores "1" -- "1" Domicilio
+Proveedores "1" -- "1" Localidad
+Pedidos "1" -- "1" Proveedores
+Pedidos "1" -- "*" Articulos
+
+
+@enduml
