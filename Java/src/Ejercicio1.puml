@@ -21,8 +21,24 @@ class Pedido {
     -proveedor:Proveedor
     -articulos:Articulo[]
 }
+class Localidad {
+    -nombre:String
+    -codigoPostal:String
+}
+
+class Domicilio {
+    -calle:String
+    -numero:String
+    -piso:String
+    -departamento:String
+    -localidad:Localidad
+    +void Mostrar()
+}
 
 Pedido "1" -- "*" Articulo
 Pedido "1" -- "1" Proveedor
+Domicilio -- "1" Localidad
+Proveedor -up- Persona
+Proveedor -- Domicilio
 
 @enduml
