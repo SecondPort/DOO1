@@ -2,7 +2,7 @@
 /'En una empresa se realiza pedidos de compra a las proveedores con los cuales trabaja, los cualesson identificados con la siguiente información:
 razón social, CUIT, Condici6n de IVA, domicilio(calle, nro, dpto., piso), localidad, teléfono y fax. Cada pedido puede solicitar uno o más artículos
 y se le realiza a un solo proveedor, esto servirá para reponer el stock; de cada artículo se debe conocer el nombre, descripción, unidad de medida y precio unitario'/
-package ejercio1 {
+package ejercicio1 {
     class Proveedores{
     -razonSocial:String
     -CUIT:String
@@ -22,14 +22,10 @@ package ejercio1 {
     class Pedidos{
         -articulos:Articulos
         -proveedores:Proveedores
-
-
     }
     class Localidad{
         -nombre:String
         -codigoPostal:String
-
-
     }
     class Domicilio{
         -calle:String
@@ -37,27 +33,35 @@ package ejercio1 {
         -departamento:String
         -piso:String
         -localidad:Localidad
-
-
     }
     class DetallePedido{
         -cantidad:int
         -precioUnitario:float
         -articulos:Articulos
         -pedidos:Pedidos
-
-
     }
 
     class CondicionIVA{
         -nombre:String
         -descripcion:String
         -proveedores:Proveedores
-
-
     }
 }
-Proveedores "1" -- "*" Articulos
+
+/'Relaciones entre las clases '/
+Proveedores <|-- Pedidos
+Pedidos <|-- Articulos
+Pedidos <|-- DetallePedido
+Pedidos <|-- Proveedores
+Pedidos <|-- CondicionIVA
+Pedidos <|-- Domicilio
+Pedidos <|-- Localidad
+
+
+
+
+
+/'Proveedores "1" -- "*" Articulos
 Proveedores "1" -- "*" Pedidos
 Pedidos "1" -- "*" Articulos
 Pedidos "1" -- "*" Proveedores
@@ -66,6 +70,5 @@ Domicilio "1" -- "1" Localidad
 Proveedores "1" -- "1" CondicionIVA
 Pedidos "1" -- "*" DetallePedido
 DetallePedido "1" -- "1" Articulos
-DetallePedido "1" -- "1" Pedidos
-
+DetallePedido "1" -- "1" Pedidos'/
 @enduml
