@@ -1,5 +1,9 @@
 @startuml
-class Proveedor {
+/'En una empresa se realiza pedidos de compra a las proveedores con los cuales trabaja, los cualesson identificados con la siguiente información:
+razón social, CUIT, Condici6n de IVA, domicilio(calle, nro, dpto., piso), localidad, teléfono y fax. Cada pedido puede solicitar uno o más artículos
+y se le realiza a un solo proveedor, esto servirá para reponer el stock; de cada artículo se debe conocer el nombre, descripción, unidad de medida y precio unitario'/
+package Ejercicio1 {
+    class Proveedor{
     -razonSocial:String
     -CUIT:String
     -condicionIVA:String
@@ -7,41 +11,47 @@ class Proveedor {
     -localidad:String
     -telefono:String
     -fax:String
+    }
+    class Articulo{
+        -nombre:String
+        -descripcion:String
+        -unidadMedida:String
+        -precioUnitario:Double
+    }
+    class Pedido{
+        -articulos:Articulos
+        -proveedores:Proveedores
+    }
+    class Localidad{
+        -nombre:String
+        -codigoPostal:String
+    }
+    class Domicilio{
+        -calle:String
+        -numero:String
+        -departamento:String
+        -piso:String
+        -localidad:Localidad
+    }
+    class DetallePedido{
+        -cantidad:int
+        -precioUnitario:float
+        -articulos:Articulos
+        -pedidos:Pedidos
+    }
+    class CondicionIVA{
+        -nombre:String
+        -descripcion:String
+        -proveedores:Proveedores
+    }
 }
-
-class Articulo {
-    -nombre:String
-    -descripcion:String
-    -unidadMedida:String
-    -precioUnitario:Double
-}
-
-class Pedido {
-    -fecha:Date
-    -proveedor:Proveedor
-    -articulos:Articulo[]
-}
-class Localidad {
-    -nombre:String
-    -codigoPostal:String
-}
-
-class Domicilio {
-    -calle:String
-    -numero:String
-    -piso:String
-    -departamento:String
-    -localidad:Localidad
-    +void Mostrar()
-}
-
-package Ejercicio1 {
-}
-
+/'Relaciones entre las clases '/
+Proveedor "1" -- "*" Articulo
 Pedido "1" -- "*" Articulo
-Pedido "1" -- "1" Proveedor
-Domicilio -- "1" Localidad
-Proveedor -up- Persona
-Proveedor -- Domicilio
-
+Pedido "1" -- "*" Proveedor
+Proveedor "1" -- "1" Domicilio
+Domicilio "1" -- "1" Localidad
+Proveedor "1" -- "1" CondicionIVA
+DetallePedido "1" -- "1" Articulo
+DetallePedido "1" --* "1" Pedido
 @enduml
