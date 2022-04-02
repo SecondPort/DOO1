@@ -39,8 +39,8 @@ package Ejercicio2{
     }
 }
 
-Revista "1" -left- "*" Edicion
-Edicion "1" -left- "*" Articulo
+Revista "1" *-left- "*" Edicion
+Edicion "1" *-left- "*" Articulo
 Articulo "1" -left- "*" Autor
 Autor "1" -down- "*" Periodista
 Periodista "1" -right- "*" Departamento
