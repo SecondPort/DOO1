@@ -39,10 +39,10 @@ package Ejercicio2{
     }
 }
 
-Revista "1" -- "*" Edicion
-Edicion "1" -- "*" Articulo
-Articulo "1" -- "*" Autor
-Autor "1" -- "*" Periodista
-Periodista "1" -- "*" Departamento
+Revista "1" -left- "*" Edicion
+Edicion "1" -left- "*" Articulo
+Articulo "1" -left- "*" Autor
+Autor "1" -down- "*" Periodista
+Periodista "1" -right- "*" Departamento
 
 @enduml
