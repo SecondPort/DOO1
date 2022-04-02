@@ -1,0 +1,105 @@
+/'En una empresa de Remis de nuestra ciudad, los móviles trabaja cubriendo las tres turnos del día(mañana, tarde , noche) .
+Cuando un cliente solicita un viaje, se envía un auto que luego del recorrido, al cobrarle al cliente, te emite un ticket donde constan entre otros,
+los siguientes datos:Fecha,  hora importe, nro. de coche, etc.. Cada móvil es manejado siempre por el mismo chófer, y dicho móvil trabaja en un único turno.
+La empresa trabaja con clientes fijos que pertenecen a empresas a las cuales se les presta servicios (NO trabaja con pasajeros comunes).
+Par esto, los datos de los clientes están disponibles en un archivo y debe llevarse un registro de cada cliente con los viajes que realiza,
+permitiendo el control de quien ha solicitado los servicios para generar losinformes pertinentes.'/
+
+
+@startuml
+
+
+class Cliente{
+	-nombre:String
+	-apellido:String
+	-dni:int
+	-direccion:String
+	-telefono:int
+	-email:String
+	-empresa:String
+	-nroCliente:int
+}
+
+class Ticket{
+	-fecha:String
+	-hora:String
+	-importe:float
+	-nroCoche:int
+}
+
+class DetalleTicket{
+    -fecha:String
+    -hora:String
+    -importe:float
+    -nroCoche:int
+}
+
+class Movil{
+	-nroMovil:int
+	-chofer:String
+	-turno:String
+}
+
+class Empresa{
+	-nombre:String
+	-direccion:String
+	-telefono:int
+	-email:String
+	-nroEmpresa:int
+}
+
+class Viaje{
+	-fecha:String
+	-hora:String
+	-importe:float
+	-nroCoche:int
+}
+
+class Registro{
+	-fecha:String
+	-hora:String
+	-importe:float
+	-nroCoche:int
+	-nroCliente:int
+}
+
+class Control{
+	-fecha:String
+	-hora:String
+	-importe:float
+	-nroCoche:int
+	-nroCliente:int
+	-nroEmpresa:int
+}
+
+class Informe{
+	-fecha:String
+	-hora:String
+	-import
+	-nroCoche:int
+	-nroCliente:int
+	-nroEmpresa:int
+}
+
+Cliente "1" -left- "*" Viaje
+Cliente "1" -right- "*" Registro
+Cliente "1" -down- "*" Control
+Cliente "1" -down- "*" Informe
+
+Empresa "1" -right- "*" Control
+Empresa "1" -left- "*" Informe
+
+Movil "1" -up- "*" Viaje
+Movil "1" -left- "*" Registro
+Movil "1" -right- "*" Control
+Movil "1" -down- "*" Informe
+
+Ticket "1" -down- "*" Viaje
+Ticket "1" -right- "*" Registro
+Ticket "1" -up- "*" Control
+Ticket "1" -down- "*" Informe
+
+DetalleTicket "1" -down-* "*" Ticket
+
+
+@enduml
