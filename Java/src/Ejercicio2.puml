@@ -1,0 +1,43 @@
+/*Una organización produce una serie de revistas periódicas. Cada revista tiene muchas edicionesconteniendo el nombre de edición, la fecha de edición, y el precio de la revista. En cada ediciónaparecen una serie de artículos , cada uno con su titulo, tema, autor, etc. Cada articulo puede habersido escrito por uno o mas periodistas pertenecientes a la organización, en donde cada periodistapertenece a un determinado departamento dentro de dicha organización en UML*/
+
+
+@startuml
+
+class Revista{
+    -edicion:Edicion
+    -articulo:Articulo
+}
+
+class Edicion{
+    -nombre:String
+    -fecha:Date
+    -precio:Double
+}
+
+class Articulo{
+    -titulo:String
+    -tema:String
+    -autor:Autor
+}
+
+class Autor{
+    -nombre:String
+    -periodista:Periodista
+}
+
+class Periodista{
+    -nombre:String
+    -departamento:Departamento
+}
+
+class Departamento{
+    -nombre:String
+}
+
+Revista "1" -- "*" Edicion
+Edicion "1" -- "*" Articulo
+Articulo "1" -- "*" Autor
+Autor "1" -- "*" Periodista
+Periodista "1" -- "*" Departamento
+
+@enduml

@@ -1,7 +1,10 @@
 @startuml
-/'En una empresa se realiza pedidos de compra a las proveedores con los cuales trabaja, los cualesson identificados con la siguiente información:
-razón social, CUIT, Condici6n de IVA, domicilio(calle, nro, dpto., piso), localidad, teléfono y fax. Cada pedido puede solicitar uno o más artículos
-y se le realiza a un solo proveedor, esto servirá para reponer el stock; de cada artículo se debe conocer el nombre, descripción, unidad de medida y precio unitario'/
+/'En una empresa se realiza pedidos de compra a las proveedores con los cuales trabaja, los cualesson
+identificados con la siguiente información:
+razón social, CUIT, Condici6n de IVA, domicilio(calle, nro, dpto., piso), localidad,
+ teléfono y fax. Cada pedido puede solicitar uno o más artículos
+y se le realiza a un solo proveedor, esto servirá para reponer el stock;
+de cada artículo se debe conocer el nombre, descripción, unidad de medida y precio unitario'/
 package Ejercicio1 {
     class Proveedor{
     -razonSocial:String
@@ -19,8 +22,8 @@ package Ejercicio1 {
         -precioUnitario:Double
     }
     class Pedido{
-        -articulos:Articulos
-        -proveedores:Proveedores
+        -detallePedido:DetallePedido
+        -proveedor:Proveedor
     }
     class Localidad{
         -nombre:String
@@ -36,22 +39,21 @@ package Ejercicio1 {
     class DetallePedido{
         -cantidad:int
         -precioUnitario:float
-        -articulos:Articulos
-        -pedidos:Pedidos
+        -articulo:Articulo
+        -pedido:Pedido
     }
     class CondicionIVA{
         -nombre:String
         -descripcion:String
-        -proveedores:Proveedores
+        -proveedor:Proveedor
     }
 }
 /'Relaciones entre las clases '/
 Proveedor "1" -- "*" Articulo
-Pedido "1" -- "*" Articulo
 Pedido "1" -- "*" Proveedor
 Proveedor "1" -- "1" Domicilio
-Domicilio "1" -- "1" Localidad
+Domicilio "*" -- "1" Localidad
 Proveedor "1" -- "1" CondicionIVA
 DetallePedido "1" -- "1" Articulo
-DetallePedido "1" --* "1" Pedido
+DetallePedido "*" --* "1" Pedido
 @enduml
