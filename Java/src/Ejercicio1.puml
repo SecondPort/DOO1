@@ -5,6 +5,7 @@ razón social, CUIT, Condici6n de IVA, domicilio(calle, nro, dpto., piso), local
  teléfono y fax. Cada pedido puede solicitar uno o más artículos
 y se le realiza a un solo proveedor, esto servirá para reponer el stock;
 de cada artículo se debe conocer el nombre, descripción, unidad de medida y precio unitario'/
+
 package Ejercicio1 {
     class Proveedor{
     -razonSocial:String

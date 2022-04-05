@@ -4,7 +4,6 @@ En cada ediciónaparecen una serie de artículos , cada uno con su titulo, tema,
 Cada articulo puede habersido escrito por uno o mas periodistas pertenecientes a la organización,
 en donde cada periodistapertenece a un determinado departamento dentro de dicha organización'/
 
-
 @startuml
 package Ejercicio2{
     class Revista{
