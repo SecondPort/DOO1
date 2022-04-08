@@ -1,0 +1,23 @@
+@startuml
+    allow_mixing
+    note as nota1
+        Luego del paso 5.2 el controlador de 
+        notificaciones llama al UC abstracto Modificar
+        notificacion y continua el curso dentro de 
+        dicho UC
+    end note
+    actor ":Administrador" as admin
+    boundary ":IntConsulNotif" as intConsulNotif
+    control ":ControladorNotif" as ctrlNotif
+    collections ":PlantillaNotificacion" as plantiList
+
+    nota1 --> ctrlNotif
+
+    admin -> intConsulNotif : "1.opcionConsultarNotificaciones()\n5.1 opcionEditarNotificacion(nro:int, asunto:String, descripcion:String, msj: String)"
+    intConsulNotif -> ctrlNotif : "2.consultarNotificaciones()\n5.2 modificarNotificacion(nro:int, asunto:String, descripcion:String, msj: String)"
+    ctrlNotif -> ctrlNotif : "3.buscarNotificaciones()"
+    ctrlNotif -up-> plantiList : "4.mostrarNotificaciones()"
+
+
+    
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+    allow_mixing
+    note as nota1
+        Luego del paso 4.2 el controlador de 
+        notificaciones llama al UC abstracto Registrar
+        notificacion y continua el curso dentro de 
+        dicho UC
+    end note
+    actor ":Administrador" as admin
+    boundary ":IntConsulNotif" as intConsulNotif
+    control ":ControladorNotif" as ctrlNotif
+    collections ":PlantillaNotificacion" as plantiList
+
+    nota1 --> ctrlNotif
+
+    admin -> intConsulNotif : "1.opcionConsultarNotificaciones()\n4.1 opcionNvaNotificacion(asunto:String, descripcion:String, msj: String)"
+    intConsulNotif -> ctrlNotif : "2.consultarNotificaciones()\n4.2 nvaNotificacion(asunto:String, descripcion:String, msj: String)"
+    ctrlNotif -> ctrlNotif : "3.buscarNotificaciones()"
+    ctrlNotif -up-> plantiList : "4.mostrarNotificaciones()"
+
+
+    
+@enduml

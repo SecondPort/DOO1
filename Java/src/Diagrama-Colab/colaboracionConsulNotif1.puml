@@ -1,0 +1,15 @@
+@startuml
+allow_mixing
+
+actor ":Administrador" as admin
+control ":ControladorNotificacion" as ctrlNoti
+boundary ":InterfazNotificacion" as intNoti
+collections ":PlantillaNotificacion" as plantiList
+
+admin -right-> intNoti : "1.opcionConsultarNotificacion()"
+intNoti -right-> ctrlNoti : "2.consultarNotificaciones()"
+ctrlNoti --> ctrlNoti : "3.buscarNotificaciones()"
+ctrlNoti -up-> plantiList : "4.buscarTodas()"
+ctrlNoti -left-> intNoti : "5.mostrarNotificaciones()"
+
+@enduml
