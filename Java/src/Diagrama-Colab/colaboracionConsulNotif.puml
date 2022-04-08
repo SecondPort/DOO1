@@ -10,6 +10,4 @@
     intConsulNotif -> ctrlNotif : "2.consultarNotificaciones()"
     ctrlNotif -> ctrlNotif : "3.buscarNotificaciones()"
     ctrlNotif -up-> plantiList : "4.mostrarNotificaciones()"
-    
-
 @enduml
