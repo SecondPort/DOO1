@@ -1,22 +1,55 @@
+/' @startuml
+
+actor Usuario
+
+Usuario -> "Seccion Comercio e Industria": Inscribir Negocio
+
+"Seccion Comercio e Industria" -> "Seccion Comercio e Industria": Confecionar F1
+
+"Seccion Comercio e Industria" -> "Centro de Computos": Registrar Negocio
+
+"Centro de Computos" -> "Centro de Computos": Liquidar Cuota
+
+"Centro de Computos" -> "Centro de Computos": Emitir Cedulones
+
+"Centro de Computos" -> "Centro de Computos": Actualizar Alicuotas
+
+"Centro de Computos" -> "Centro de Computos": Registrar Pagos
+
+"Centro de Computos" -> "Centro de Computos": Registrar Pagos
+
+"Centro de Computos" -> "Centro de Computos": Registrar Pagos
+
+@enduml '/
 @startuml
-'https://plantuml.com/use-case-diagram
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+actor Usuario
 
-User -> (Start)
-User --> (Use)
+participant "Comercio e Industria" as CI
+participant "Centro de Cómputos" as CC
+participant "Sistema Informático" as SI
+participant "Concejo Deliberante" as CD
+participant "Caja" as C
+participant "Banco" as B
 
-Admin ---> (Use)
+Usuario -> CI: Inscribir negocio
+CI -> Usuario: Presentar documentación
+CI -> Usuario: Declarar actividad
+CI -> Usuario: Declarar datos de ubicación
+CI -> Usuario: Confecionar formulario F1
+CI -> Usuario: Entregar copia del F1
+CI -> CC: Enviar duplicado del F1
+CC -> SI: Registrar nuevo comercio
+CC -> SI: Liquidar cuota
+CC -> SI: Emitir cedulones
+CC -> Usuario: Enviar cedulones
+Usuario -> B: Pagar cedulones
+B -> Usuario: Cobrar cedulones
+B -> CC: Enviar cedulones cobrados
+CC -> SI: Registrar pagos
+Usuario -> CI: Solicitar cedulón actualizado
+CI -> Usuario: Entregar cedulón actualizado
+Usuario -> C: Pagar cedulón actualizado
+C -> SI: Registrar pago
 
-note right of Admin : This is an example.
-
-note right of (Use)
-A note can also
-be on several lines
-end note
-
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
 @enduml
