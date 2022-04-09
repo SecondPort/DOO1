@@ -1,0 +1,18 @@
+@startuml
+
+allow_mixing
+actor GestorDeLiquidaciones
+actor EncargadoDeCarga
+actor Cobrador
+actor Afiliado
+
+GestorDeLiquidaciones -> EncargadoDeCarga : calcula montos a cobrar
+EncargadoDeCarga -> Cobrador : entrega planilla de liquidacion
+Cobrador -> Afiliado : cobra cuotas
+Afiliado -> Cobrador : entrega dinero
+Cobrador -> EncargadoDeCarga : entrega planilla de liquidacion
+EncargadoDeCarga -> GestorDeLiquidaciones : registra montos cobrados
+GestorDeLiquidaciones -> EncargadoDeCarga : emite listado de morosos
+EncargadoDeCarga -> GestorDeLiquidaciones : emite listado por afiliado
+
+@enduml

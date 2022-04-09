@@ -1,22 +1,25 @@
+/' Una empresa que presta servicios de medicina prepaga presenta el siguiente proceso para el cobro de las cuotas mensuales
+por la prestación de servicios a sus afiliados: entre el día 25 y 30 de cada mes Gestor de Liquidaciones realiza el cálculo
+de los montos a cobrar a sus afiliados (individual y grupofamiliar) de cada plan de salud. Según el plan de cada afiliado
+se emiten recibos de cobro (queincluyen datos del afiliado, plan de salud y monto adeudado) y una planilla de Liquidación
+de cuotas para cada cobrador de una zona de cobro, detallando nro. de afiliado, nro. de recibo ymontos.
+Cuando el cobrador regresa con la Planilla de Liquidación, luego de haber realizado lacobranza, el Encargado de la Carga
+de las cuotas registra los montos cobrados por afiliado en elsistema   actualizando   la   correspondiente   cuenta   del
+afiliado,   entregando   un   comprobante   decobranzas   realizadas   al   cobrador,   registrándose   en   su   cuenta   para   su   posterior   liquidación.
+Periódicamente el Gestor de Liquidaciones emite un listado de Morosos por zona y un Listado porafiliado detallando las cuotas adeudadas.
+Cabe aclarar que una zona de cobro considera un conjuntode barrios. '/
 @startuml
-'https://plantuml.com/use-case-diagram
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+actor Usuario
 
-User -> (Start)
-User --> (Use)
+Usuario -> GestorLiquidaciones: Calcular montos a cobrar
+GestorLiquidaciones -> GestorLiquidaciones: Emitir recibos de cobro
+GestorLiquidaciones -> GestorLiquidaciones: Emitir planilla de liquidacion
+GestorLiquidaciones -> EncargadoCargaCuotas: Registrar montos cobrados
+EncargadoCargaCuotas -> EncargadoCargaCuotas: Actualizar cuenta del afiliado
+EncargadoCargaCuotas -> EncargadoCargaCuotas: Entregar comprobante de cobranzas
+EncargadoCargaCuotas -> EncargadoCargaCuotas: Registrar cuenta para liquidacion
+GestorLiquidaciones -> GestorLiquidaciones: Emitir listado de morosos
+GestorLiquidaciones -> GestorLiquidaciones: Emitir listado por afiliado
 
-Admin ---> (Use)
-
-note right of Admin : This is an example.
-
-note right of (Use)
-A note can also
-be on several lines
-end note
-
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
 @enduml
