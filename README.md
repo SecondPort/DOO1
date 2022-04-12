@@ -1,1 +1,1 @@
-Repositorio dedicado a la materi Diseño Orientado a Objetos, de la Universidad Blas Pascal
+Repositorio dedicado a almacenar trabajos de la materia Diseño Orientado a Objetos, de la Universidad Blas Pascal
