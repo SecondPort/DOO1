@@ -8,7 +8,7 @@ de las cuotas registra los montos cobrados por afiliado en elsistema   actualiza
 afiliado,   entregando   un   comprobante   decobranzas   realizadas   al   cobrador,   registrándose   en   su   cuenta   para   su   posterior   liquidación.
 Periódicamente el Gestor de Liquidaciones emite un listado de Morosos por zona y un Listado porafiliado detallando las cuotas adeudadas.
 Cabe aclarar que una zona de cobro considera un conjuntode barrios. '/
-@startuml
+@startuml ejercicio6
 
 actor Usuario
 
