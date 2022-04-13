@@ -1,4 +1,5 @@
 @startuml
+/'tambien llamado de interacciones, secuencia '/
 
 allow_mixing
 actor GestorDeLiquidaciones
