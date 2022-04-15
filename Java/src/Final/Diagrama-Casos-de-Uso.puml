@@ -1,5 +1,5 @@
 
-@startuml
+@startuml Casos-de-Uso
 
 actor Usuario
 
