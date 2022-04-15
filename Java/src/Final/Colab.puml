@@ -12,13 +12,19 @@
     Operadora -> Cliente : Informa precio
     Cliente -> Operadora : Acepta
     Operadora -> Encargado : Registra pedido
-    Encargado -> Operadora : Genera listado
-    Operadora -> Distribuidor : Entrega listado
+    Encargado -> Operadora : Registra pedido
+    Operadora -> Cliente : Informa fecha de entrega
+    Operadora -> Distribuidor : Genera listado
+    Distribuidor -> Operadora : Recibe listado
     Distribuidor -> Cliente : Entrega pedido
     Cliente -> Distribuidor : Paga
-    Distribuidor -> Encargado : Rinde
+    Distribuidor -> Cliente : Entrega factura
+    Distribuidor -> Encargado : Rinde trabajo
+    Encargado -> Distribuidor : Registra datos
     Encargado -> Contador : Genera resumen
-    Contador -> Presidente : Informa precios
+    Contador -> Encargado : Recibe resumen
+    Presidente -> Encargado : Informa nuevos precios
+    Encargado -> Presidente : Registra nuevos precios
     Presidente -> Encargado : Solicita informacion
     Encargado -> Presidente : Entrega informacion
 @enduml
