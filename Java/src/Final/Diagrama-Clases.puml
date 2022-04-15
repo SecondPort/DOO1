@@ -1,0 +1,345 @@
+/' La empresa Super Gas SA es una empresa familiar que se dedica al fraccionamiento y
+venta de gas envasado y a granel.
+La empresa cuenta con distribuidores organizados por zonas cubriendo todos los
+barrios de la ciudad de Córdoba, los cuales se encargan de efectuar el traslado del gas a
+donde lo pidió el cliente. Por otra parte, se ofrece a los clientes un servicio de atención
+telefónica las 24hs. del día para poder atender los pedidos correspondientes.
+El procedimiento para la venta y distribución del gas es el siguiente:
+Cuando el cliente llama por teléfono, es atendido por una operadora quien le solicita
+sus datos personales y el o los productos necesarios, es decir la cantidad de garrafas de gas
+que desea (ya sea de 10, 15 , 30 o 45 Kg.) o a granel (m3). En ese momento se verifica si
+quien llama es cliente de la empresa, si no lo es, se procede a registrarlo como nuevo cliente
+(considerando los siguientes datos: tipo y numero de documento, nombre, apellido, razón
+social, dirección, barrio, zona y teléfono). Luego la operadora le informa al cliente el precio
+de cada producto, el monto total del pedido, el día y la hora aproximada en el que el
+distribuidor le entregará el pedido en su domicilio. Para estimar la fecha de entrega se debe
+considerar los pedidos efectuados con anterioridad y pendientes de entrega, la zona que
+corresponda y el distribuidor asignado a dicha zona. Cabe aclarar que un distribuidor puede
+efectuar una cantidad determinada de entregas en forma diaria. Si el cliente está de
+acuerdo se registra el pedido.
+Todas las mañanas, a primera hora del día la operadora genera un listado de los
+pedidos pendientes de entrega para cada distribuidor asignado a una determinada zona, y
+se lo entrega para que proceda al reparto correspondiente. Además se genera la factura a
+fin de que el distribuidor pueda cobrarle al cliente. Los distribuidores se dirigen al domicilio
+indicado y entregan el pedido, realizando la cobranza (que puede ser de contado, con
+cheque o por cualquier medio de pago electrónico) y entregando la factura como
+comprobante de pago. En ese momento el distribuidor hace firmar al cliente en el listado
+para luego poder realizar la rendición correspondiente. Al finalizar el día el distribuidor se
+dirige a la empresa y rinde el trabajo realizado entregando el dinero y/o los cheques
+recibidos en concepto de pago, el listado con los pedidos entregados y la correspondiente
+firma del cliente, indicando aquellos pedidos que no fueron entregados. El encargado
+administrativo procede a registrar fecha y hora de entrega de cada pedido, forma de pago,
+datos del cheque y el banco en el caso que corresponda, y cualquier observación de ser necesario, y sigue dejando como pendiente aquellos pedidos que no fueron entregados, de
+manera tal que sea considerado en el listado de reparto del día siguiente.
+Al final de cada día el encargado administrativo confecciona un resumen con los
+ingresos percibidos dirigido al contador de la empresa, para su correspondiente
+procesamiento.
+Puede ocurrir que el cliente desee cancelar el pedido, frente a esta situación, es
+atendido por la operadora quien procede a registrar la cancelación del mismo y el motivo
+respectivo, y si el pedido ya está considerado en el reparto de ese día, se comunica por
+radio con el distribuidor para avisarle que dicho pedido no debe ser entregado, y se registra
+en la factura correspondiente que está anulada.
+En forma mensual, el presidente de la Empresa informa los nuevos precios del
+producto, si es hubo alguna modificación, de manera de mantener actualizados los mismos.
+Además, el presidente necesita información estadística de ventas por periodo (invierno,
+verano, etc.). Esta información no está siendo brindada actualmente y el presidente desea
+que se realice un sistema informático que contemple el procedimiento de venta y
+distribución de gas y que le brinde la información que el necesita para su correspondiente
+análisis.
+Consideraciones: un distribuidor tiene asignada una sola zona. Una zona está
+conformada por uno o más barrios. Un barrio se encuentra dentro de una única zona. El
+domicilio de entregada del pedido es el domicilio del cliente. Cada factura puede ser pagada
+con una o más formas de pago. '/
+@startuml
+
+
+class Cliente{
+	-tipoDocumento:String
+	-numeroDocumento:String
+	-nombre:String
+	-apellido:String
+	-razonSocial:String
+	-direccion:String
+	-barrio:String
+	-zona:String
+	-telefono:String
+	+Cliente(tipoDocumento:String,numeroDocumento:String,nombre:String,apellido:String,razonSocial:String,direccion:String,barrio:String,zona:String,telefono:String)
+	+getTipoDocumento():String
+	+setTipoDocumento(tipoDocumento:String):void
+	+getNumeroDocumento():String
+	+setNumeroDocumento(numeroDocumento:String):void
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getApellido():String
+	+setApellido(apellido:String):void
+	+getRazonSocial():String
+	+setRazonSocial(razonSocial:String):void
+	+getDireccion():String
+	+setDireccion(direccion:String):void
+	+getBarrio():String
+	+setBarrio(barrio:String):void
+	+getZona():String
+	+setZona(zona:String):void
+	+getTelefono():String
+	+setTelefono(telefono:String):void
+}
+
+class Empleado{
+	-tipoDocumento:String
+	-numeroDocumento:String
+	-nombre:String
+	-apellido:String
+	-razonSocial:String
+	-direccion:String
+	-barrio:String
+	-zona:String
+	-telefono:String
+	-cargo:String
+	-salario:String
+	+Empleado(tipoDocumento:String,numeroDocumento:String,nombre:String,apellido:String,razonSocial:String,direccion:String,barrio:String,zona:String,telefono:String,cargo:String,salario:String)
+	+getTipoDocumento():String
+	+setTipoDocumento(tipoDocumento:String):void
+	+getNumeroDocumento():String
+	+setNumeroDocumento(numeroDocumento:String):void
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getApellido():String
+	+setApellido(apellido:String):void
+	+getRazonSocial():String
+	+setRazonSocial(razonSocial:String):void
+	+getDireccion():String
+	+setDireccion(direccion:String):void
+	+getBarrio():String
+	+setBarrio(barrio:String):void
+	+getZona():String
+	+setZona(zona:String):void
+	+getTelefono():String
+	+setTelefono(telefono:String):void
+	+getCargo():String
+	+setCargo(cargo:String):void
+	+getSalario():String
+	+setSalario(salario:String):void
+}
+
+class Operadora{
+	-nombre:String
+	-apellido:String
+	-telefono:String
+	+Operadora(nombre:String,apellido:String,telefono:String)
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getApellido():String
+	+setApellido(apellido:String):void
+	+getTelefono():String
+	+setTelefono(telefono:String):void
+}
+
+class Distribuidor{
+	-nombre:String
+	-apellido:String
+	-telefono:String
+	-zona:String
+	+Distribuidor(nombre:String,apellido:String,telefono:String,zona:String)
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getApellido():String
+	+setApellido(apellido:String):void
+	+getTelefono():String
+	+setTelefono(telefono:String):void
+	+getZona():String
+	+setZona(zona:String):void
+}
+
+class Barrio{
+	-nombre:String
+	-zona:String
+	+Barrio(nombre:String,zona:String)
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getZona():String
+	+setZona(zona:String):void
+}
+
+class Zona{
+	-nombre:String
+	+Zona(nombre:String)
+	+getNombre():String
+	+setNombre(nombre:String):void
+}
+
+class Pedido{
+	-fecha:Date
+	-hora:Date
+	-cantidad:int
+	-tipo:String
+	-cliente:Cliente
+	-operadora:Operadora
+	-distribuidor:Distribuidor
+	+Pedido(fecha:Date,hora:Date,cantidad:int,tipo:String,cliente:Cliente,operadora:Operadora,distribuidor:Distribuidor)
+	+getFecha():Date
+	+setFecha(fecha:Date):void
+	+getHora():Date
+	+setHora(hora:Date):void
+	+getCantidad():int
+	+setCantidad(cantidad:int):void
+	+getTipo():String
+	+setTipo(tipo:String):void
+	+getCliente():Cliente
+	+setCliente(cliente:Cliente):void
+	+getOperadora():Operadora
+	+setOperadora(operadora:Operadora):void
+	+getDistribuidor():Distribuidor
+	+setDistribuidor(distribuidor:Distribuidor):void
+}
+
+class Factura{
+	-numero:int
+	-fecha:Date
+	-hora:Date
+	-monto:double
+	-formaPago:String
+	-pedido:Pedido
+	+Factura(numero:int,fecha:Date,hora:Date,monto:double,formaPago:String,pedido:Pedido)
+	+getNumero():int
+	+setNumero(numero:int):void
+	+getFecha():Date
+	+setFecha(fecha:Date):void
+	+getHora():Date
+	+setHora(hora:Date):void
+	+getMonto():double
+	+setMonto(monto:double):void
+	+getFormaPago():String
+	+setFormaPago(formaPago:String):void
+	+getPedido():Pedido
+	+setPedido(pedido:Pedido):void
+}
+class DeatalleFactura{
+	-factura:Factura
+	-formaPago:String
+	-numeroCheque:int
+	-banco:String
+	+DeatalleFactura(factura:Factura,formaPago:String,numeroCheque:int,banco:String)
+	+getFactura():Factura
+	+setFactura(factura:Factura):void
+	+getFormaPago():String
+	+setFormaPago(formaPago:String):void
+	+getNumeroCheque():int
+	+setNumeroCheque(numeroCheque:int):void
+	+getBanco():String
+	+setBanco(banco:String):void
+}
+
+class Resumen{
+	-fecha:Date
+	-monto:double
+	+Resumen(fecha:Date,monto:double)
+	+getFecha():Date
+	+setFecha(fecha:Date):void
+	+getMonto():double
+	+setMonto(monto:double):void
+}
+
+class DetallePedido{
+	-pedido:Pedido
+	-fecha:Date
+	-hora:Date
+	-observacion:String
+	+DetallePedido(pedido:Pedido,fecha:Date,hora:Date,observacion:String)
+	+getPedido():Pedido
+	+setPedido(pedido:Pedido):void
+	+getFecha():Date
+	+setFecha(fecha:Date):void
+	+getHora():Date
+	+setHora(hora:Date):void
+	+getObservacion():String
+	+setObservacion(observacion:String):void
+}
+
+class CancelacionPedido{
+	-pedido:Pedido
+	-fecha:Date
+	-hora:Date
+	-motivo:String
+	+CancelacionPedido(pedido:Pedido,fecha:Date,hora:Date,motivo:String)
+	+getPedido():Pedido
+	+setPedido(pedido:Pedido):void
+	+getFecha():Date
+	+setFecha(fecha:Date):void
+	+getHora():Date
+	+setHora(hora:Date):void
+	+getMotivo():String
+	+setMotivo(motivo:String):void
+}
+
+class ListadoPedido{
+	-pedido:Pedido
+	-fecha:Date
+	-hora:Date
+	-distribuidor:Distribuidor
+	+ListadoPedido(pedido:Pedido,fecha:Date,hora:Date,distribuidor:Distribuidor)
+	+getPedido():Pedido
+	+setPedido(pedido:Pedido):void
+	+getFecha():Date
+	+setFecha(fecha:Date):void
+	+getHora():Date
+	+setHora(hora:Date):void
+	+getDistribuidor():Distribuidor
+	+setDistribuidor(distribuidor:Distribuidor):void
+}
+
+class Administrativo{
+	-nombre:String
+	-apellido:String
+	-telefono:String
+	+Administrativo(nombre:String,apellido:String,telefono:String)
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getApellido():String
+	+setApellido(apellido:String):void
+	+getTelefono():String
+	+setTelefono(telefono:String):void
+}
+
+
+class Contador{
+	-nombre:String
+	-apellido:String
+	-telefono:String
+	+Contador(nombre:String,apellido:String,telefono:String)
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getApellido():String
+	+setApellido(apellido:String):void
+	+getTelefono():String
+	+setTelefono(telefono:String):void
+}
+
+class Presidente{
+	-nombre:String
+	-apellido:String
+	-telefono:String
+	+Presidente(nombre:String,apellido:String,telefono:String)
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getApellido():String
+	+setApellido(apellido:String):void
+	+getTelefono():String
+	+setTelefono(telefono:String):void
+}
+
+
+class Gerente{
+	-nombre:String
+	-apellido:String
+	-telefono:String
+	+Gerente(nombre:String,apellido:String,telefono:String)
+	+getNombre():String
+	+setNombre(nombre:String):void
+	+getApellido():String
+	+setApellido(apellido:String):void
+	+getTelefono():String
+	+setTelefono(telefono:String):void
+}
+
+
+@enduml
