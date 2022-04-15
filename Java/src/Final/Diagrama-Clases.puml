@@ -340,6 +340,4 @@ class Gerente{
 	+getTelefono():String
 	+setTelefono(telefono:String):void
 }
-
-
 @enduml
