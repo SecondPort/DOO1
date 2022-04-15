@@ -1,0 +1,24 @@
+@startuml
+    allow_mixing
+    actor Cliente
+    actor Operadora
+    actor Distribuidor
+    actor Encargado
+    actor Contador
+    actor Presidente
+    Cliente -> Operadora : Solicita pedido
+    Operadora -> Cliente : Solicita datos
+    Cliente -> Operadora : Entrega datos
+    Operadora -> Cliente : Informa precio
+    Cliente -> Operadora : Acepta
+    Operadora -> Encargado : Registra pedido
+    Encargado -> Operadora : Genera listado
+    Operadora -> Distribuidor : Entrega listado
+    Distribuidor -> Cliente : Entrega pedido
+    Cliente -> Distribuidor : Paga
+    Distribuidor -> Encargado : Rinde
+    Encargado -> Contador : Genera resumen
+    Contador -> Presidente : Informa precios
+    Presidente -> Encargado : Solicita informacion
+    Encargado -> Presidente : Entrega informacion
+@enduml
