@@ -1,4 +1,4 @@
-@startuml
+@startuml Colaboraciones
     allow_mixing
     actor Cliente
     actor Operadora

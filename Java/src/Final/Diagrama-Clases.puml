@@ -50,7 +50,7 @@ Consideraciones: un distribuidor tiene asignada una sola zona. Una zona está
 conformada por uno o más barrios. Un barrio se encuentra dentro de una única zona. El
 domicilio de entregada del pedido es el domicilio del cliente. Cada factura puede ser pagada
 con una o más formas de pago. '/
-@startuml
+@startuml Diagrama-de-Clases
 
 package Final{
 	class Cliente{
