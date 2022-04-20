@@ -9,7 +9,7 @@
     <option name="HEAP_SIZE" value="100" />
     <option name="OPTION_INCLUDE_LIBS" value="true" />
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-18" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

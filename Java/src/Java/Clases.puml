@@ -1,0 +1,33 @@
+@startuml
+
+
+package edu.ubp.doo.main{
+    class Main{}
+}
+
+package edu.ubp.doo.modelo{
+    class Vehiculo{
+        nroSerie:int
+        color:String
+        +Vehiculo(nroSerie:int,color:String)
+        }
+    class Barco{
+        largoProa:float
+        LaragoProa:float
+        +Barco(largoProa:float,LaragoProa:float)
+        +toString():String
+        }
+    class Auto{
+        cilindrada:int
+        +Auto(cilindrada:int, nroSerie:int, color:String)
+        }
+    class Registro{
+        listado:Vehiculo
+        +cargarListado(lista):void
+        +mostrarListado():void
+        }
+}
+package edu.ubp.doo.uml{
+    class Diagrama-de-clases{}
+}
+@enduml
