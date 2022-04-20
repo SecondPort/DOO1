@@ -30,4 +30,15 @@ package edu.ubp.doo.modelo{
 package edu.ubp.doo.uml{
     class Diagrama-de-clases{}
 }
+Barco -up-|> Vehiculo
+Auto -up-|> Vehiculo
+
+Registro "0..*" o-down- "0..*" Vehiculo
+main "1".. "1" Registro
+
+note as n1
+esto es un comentario uml
+end note
+
+Registro - n1
 @enduml
