@@ -22,15 +22,12 @@ public class Registro{
 
 public class Registro {
     List<Vehiculo> listado;
-
-    public void cargarListado(List<Vehiculo> lista){
+/*     public void cargarListado(List<Vehiculo> lista){
         this.listado = lista;
-    }
-
+    } */
     public void cargarListado(Vehiculo...lista){
         this.listado = Arrays.asList(lista);
     }
-
     public void mostrarListado(){
         for(Vehiculo vehiculo : listado){
             System.out.println(vehiculo);
