@@ -1,0 +1,45 @@
+@startuml
+    actor ":ResponsableMinisterio" as responsable
+    boundary ":InterfazConsultarMuestra" as intConsuMue
+
+    control ":ControladorMuestra" as ctrlMue
+
+    collections ":Prestataria" as prestaList
+    collections ":Muestra" as muestraList
+    entity "m1:Muestra" as m1
+
+
+    responsable -> intConsuMue : 1.opcionConsulMuestra() 
+    activate intConsuMue
+    
+    intConsuMue -> ctrlMue : 2.consultarMuestra()
+    activate ctrlMue
+    ctrlMue --> intConsuMue : 3.mostrarOpcionMuestrasNoRevisadas()
+    
+    responsable -> intConsuMue : 4.seleccionarOpcionMuestrasNoRevisadas()
+    responsable -> intConsuMue : 5.tomarFechaDesde()
+    responsable -> intConsuMue : 6.tomarFechaHasta()
+    responsable -> intConsuMue : 7.tomarCuilPrestataria()
+    intConsuMue -> ctrlMue : 8.tomarCuilPresta(cuil: String)
+    ctrlMue -> ctrlMue : 9.consultarCuilPrestataria(cuil: String)
+    ctrlMue -> prestaList : 10.mostrarPrestatarias()
+    activate prestaList
+    return p1:Prestataria
+    destroy prestaList
+    ctrlMue --> intConsuMue : p1:Prestataria
+    responsable -> intConsuMue : 11.seleccionarPrestataria()
+    intConsuMue -> ctrlMue : 12.tomarDatosBusqueda()
+    ctrlMue -> ctrlMue : 13.buscarMuestras()    
+    ctrlMue -> muestraList : 14.mostrarMuestras()
+    activate muestraList
+    return lista:Muestra
+    destroy muestraList
+    ctrlMue --> intConsuMue : lista:Muestra
+    responsable -> intConsuMue : 15.seleccionarMuestraConstatar(nroMuestra: String)
+    intConsuMue -> ctrlMue : 16.tomarMuestraConstatar(nroMuestra: String)
+    ctrlMue -> ctrlMue : 17.buscarMuestraConstatar(nroMuestra: String)
+    ctrlMue -> m1 : 18.mostrar()
+    activate m1
+    return m1:Muestra
+    return m1:Muestra
+@enduml
