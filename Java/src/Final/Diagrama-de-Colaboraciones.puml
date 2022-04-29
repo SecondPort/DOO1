@@ -6,14 +6,14 @@
     actor Encargado
     actor Contador
     actor Presidente
-    Cliente -> Operadora : Solicita pedido
-    Operadora -> Cliente : Solicita datos
-    Cliente -> Operadora : Entrega datos
-    Operadora -> Cliente : Informa precio
-    Cliente -> Operadora : Acepta
-    Operadora -> Encargado : Registra pedido
-    Encargado -> Operadora : Registra pedido
-    Operadora -> Cliente : Informa fecha de entrega
+    Cliente --> Operadora : Solicita pedido
+    Operadora -down-> Cliente : Solicita datos
+    Cliente -down-> Operadora : Entrega datos
+    Operadora -down-> Cliente : Informa precio
+    Cliente -up-> Operadora : Acepta
+    Operadora -down-> Encargado : Registra pedido
+    Encargado -right-> Operadora : Registra pedido
+    Operadora -down-> Cliente : Informa fecha de entrega
     Operadora -> Distribuidor : Genera listado
     Distribuidor -> Operadora : Recibe listado
     Distribuidor -> Cliente : Entrega pedido
@@ -23,8 +23,9 @@
     Encargado -> Distribuidor : Registra datos
     Encargado -> Contador : Genera resumen
     Contador -> Encargado : Recibe resumen
-    Presidente -> Encargado : Informa nuevos precios
-    Encargado -> Presidente : Registra nuevos precios
-    Presidente -> Encargado : Solicita informacion
-    Encargado -> Presidente : Entrega informacion
+    Presidente -down-> Encargado : Informa nuevos precios
+    Encargado -up-> Presidente: Registra nuevos precios
+
+    Presidente -up-> Encargado : Solicita informacion
+    Encargado -down-> Presidente : Entrega informacion
 @enduml
