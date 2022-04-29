@@ -1,0 +1,18 @@
+@startuml
+    actor ":Administrador" as admin
+    boundary ":IntConsulNotif" as intConsulNotif
+    control "ControladorNotif" as ctrlNotif
+    collections ":PlantillaNotificacion" as plantiList
+    
+
+    admin -> intConsulNotif : 1.opcionConsultarNotificaciones()
+    activate intConsulNotif
+    intConsulNotif -> ctrlNotif : 2.consultarNotificaciones()
+    activate ctrlNotif
+    ctrlNotif -> ctrlNotif : 3.buscarNotificaciones()
+    ctrlNotif -> plantiList : 4.mostrarNotificaciones()
+    activate plantiList
+    return lista:PlantillaNotificacion
+    destroy plantiList
+    return lista:PlantillaNotificacion
+@enduml
