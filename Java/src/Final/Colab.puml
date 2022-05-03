@@ -1,0 +1,19 @@
+@startuml
+    allow_mixing
+    actor ":Cliente" as C
+    boundary ":Telefono" as T
+    control ":Operadora" as O
+    control ":Distribuidor" as D
+    database ":DB Cliente" as BD
+    database ":DB Pedidos" as BD2
+    collections ":Pedidos" as P
+
+    C -> T : 1.llamar a la operadora()
+    T <- O : 2.recibir llamada()\n3.verificar si es cliente()
+    O -> BD : 4.registra como cliente nuevo()
+    O -up-> BD2 : 5.registraPedido()
+    O -down-> P : 6.genera lista pedidos()
+    O --> D : 7.entrega listado()
+    D -> C : 8.efectua entrega()
+
+@enduml

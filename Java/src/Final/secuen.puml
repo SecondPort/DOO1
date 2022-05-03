@@ -1,0 +1,23 @@
+@startuml Registro-Pedidos
+
+actor Cliente as C
+boundary Telefono as T
+control Operadora as O
+collections Pedido as P
+entity Distribuidor as D
+database Clientes as Cl
+database DBPedidos as LP
+
+C -> T : 1. El cliente llama a la operadora para realizar un pedido
+activate T
+O -> T : 2. Atiende y verifica si es cliente
+activate O
+O -> Cl : 3. Registra como nuevo cliente
+O -> T : 4. Toma pedido del cliente
+O -> LP : 5. Registra pedido
+O -> P : 6. Genera listado de pedidos
+O -> D : 7. Entrega listado
+D -> C : 8. Efectua entrega
+
+
+@enduml
