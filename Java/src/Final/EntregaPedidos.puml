@@ -1,0 +1,35 @@
+
+@startuml
+[*]-->operadora
+
+state operadora {
+	[*]-->generarListado
+	generarListado-->distribuidor
+	generarListado-->generarFactura
+	generarFactura-->[*]
+}
+
+state distribuidor {
+	[*]-->entregarPedido
+	entregarPedido-->cobrar
+    generarFactura-->cobrar : entrega de la factura al repartidor
+	cobrar-->[*]
+	cobrar-->firmarListado
+	firmarListado-->[*]
+}
+
+distribuidor-->encargado
+
+state encargado {
+    firmarListado-->registrarEntrega :entrega del dinero y facturas al final del dia
+	[*]-->registrarEntrega
+	registrarEntrega-->[*]
+	registrarEntrega-->registrarPago
+	registrarPago-->[*]
+	registrarPago-->registrarObservacion
+	registrarObservacion-->[*]
+	registrarObservacion-->dejarPendiente
+	dejarPendiente-->[*]
+}
+
+@enduml

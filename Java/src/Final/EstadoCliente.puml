@@ -1,0 +1,38 @@
+'La empresa Super Gas SA es una empresa familiar que se dedica al fraccionamiento y venta de gas envasado y a granel.La  empresa  cuenta  con  distribuidores  organizados  por  zonas  cubriendo todos  los barrios  de  la  ciudad  de  Córdoba,  los  cuales  se  encargan  de  efectuar  el  traslado  del  gas  a donde  lo  pidió  el  cliente.  Por  otra  parte,  se  ofrece  a  los  clientes  un  servicio  de  atención telefónica las 24hs. del día para poder atender los pedidos correspondientes.El procedimiento para la venta y distribución del gas es el siguiente:Cuando el cliente llama por teléfono, es atendido por una operadora quien le solicita sus datos personales y el o los productos necesarios, es decir la cantidad de garrafas de gas que  desea  (ya  sea  de  10,  15  ,  30  o  45  Kg.)  o  a  granel  (m3).  En  ese  momento  se  verifica  si quien llama es cliente de la empresa, si no lo es, se procede a registrarlo como nuevo cliente (considerando  los  siguientes  datos:  tipo  y  numero  de  documento,  nombre,  apellido,  razón social, dirección, barrio, zona y teléfono). Luego la operadora le informa al cliente el precio de  cada  producto,  el  monto  total  del  pedido,  el  día  y  la  hora  aproximada  en  el  que  el distribuidor le entregará el pedido en su domicilio. Para estimar la fecha de entrega se debe considerar  los  pedidos  efectuados  con  anterioridad  y  pendientes  de  entrega,  la  zona  que corresponda y el distribuidor asignado a dicha zona. Cabe aclarar que un distribuidor puede efectuar  una  cantidad  determinada  de  entregas  en  forma  diaria.  Si  el  cliente  está  de acuerdo se registra el pedido.Todas  las  mañanas,  a  primera  hora  del  día  la  operadora  genera  un  listado  de  los pedidos  pendientes  de  entrega  para  cada  distribuidor  asignado  a  una  determinada  zona,  y se  lo  entrega  para  que  proceda  al  reparto  correspondiente.  Además  se  genera  la  factura  a fin de que el distribuidor pueda cobrarle al cliente. Los distribuidores se dirigen al domicilio indicado  y  entregan  el  pedido,  realizando  la  cobranza  (que  puede  ser  decontado,  con cheque   o   por   cualquier   medio   de   pago   electrónico)   y   entregando   la   factura   como comprobante  de  pago.  En  ese  momento  el  distribuidor  hace  firmar  al  cliente  en  el  listado para  luego  poder  realizar  la  rendición  correspondiente.  Al  finalizar  el  día  el  distribuidor  se dirige  a  la  empresa  y  rinde  el  trabajo  realizado  entregando  el  dinero  y/o  los  cheques recibidos  en  concepto  de  pago,  el  listado  con  los  pedidos  entregados  y  la  correspondiente firma  del  cliente,  indicando  aquellos  pedidos  que  no  fueronentregados.  El  encargado administrativo procede a registrar fecha y hora de entrega de cada pedido, forma de pago, datos  del  cheque  y  el  banco  en  el  caso  que  corresponda,  y  cualquier  observación  de  ser necesario, y sigue dejando como pendiente aquellos pedidos que no fueron entregados, de manera tal que sea considerado en el listado de reparto del día siguiente.Al  final  de  cada  día  el  encargado  administrativo  confecciona  un  resumen  con  los ingresos   percibidos   dirigido   al   contador   de   la   empresa,   para   su   correspondiente procesamiento.Puede  ocurrir  que  el  cliente  desee  cancelar  el  pedido,  frente  a  esta  situación,  es atendido  por  la  operadora  quien  procede  a  registrar  la  cancelación  del  mismo  y  el  motivo respectivo,  y  si  el  pedido  ya estáconsiderado  en  el  reparto  de  ese  día,  se  comunica  por radio con el distribuidor para avisarle que dicho pedido no debe ser entregado, y se registra en la factura correspondiente que está anulada.En  forma  mensual,  el  presidente  de  la  Empresa  informa  los  nuevos  precios  del producto, si es hubo alguna modificación, de manera de mantener actualizados los mismos. Además,  el  presidente  necesita  información  estadística  de  ventas  por  periodo  (invierno, verano,  etc.).  Esta  información  no estásiendo  brindada  actualmente  y  el  presidente  desea que   se   realice   un   sistema   informático   que   contemple   el   procedimiento   de   venta   y distribución  de  gas  y  que  le  brinde  la  información  que  el  necesita  para  su  correspondiente análisis.
+'
+'
+'Realizar el diagrama de transición de estados del cliente realizando un pedido en PlantUML*/
+'
+@startuml
+
+[*] --> ingresoCliente
+state ingresoCliente{
+}
+
+ingresoCliente --> verificarCliente : pedido de los datos del cliente
+
+
+state verificarCliente{
+
+}
+
+verificarCliente --> registrarPedido :registro de los datos del pedido
+verificarCliente --> registrarCliente :no se encuenta el cliente en la base de datos
+
+state registrarCliente{
+}
+
+registrarCliente --> registrarPedido
+
+state registrarPedido{
+}
+
+registrarPedido --> informarPrecio
+
+state informarPrecio{
+}
+informarPrecio --> registrarPedido : aceptacion de las tarifas
+
+registrarPedido --> [*]
+
+@enduml
