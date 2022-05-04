@@ -1,0 +1,23 @@
+@startuml
+    allow_mixing
+    actor ":Operadora" as O
+    boundary ":InterfazRegistrarPedido" as I
+    control ":ControladorPedido" as CO
+    collections ":Pedido" as P
+    collections ":Distribuidos" as D
+    collections ":Cliente" as C
+    entity "p1:Pedido" as P1
+    entity "dp1:DetallePedido" as DP1
+
+    O -> I :1.opcionRegistrarPedido()\n4.tomarDatosCliente()\n9.tomarDatosPedido(List<Producto>productosSolicitados)\n16.confirmarPedido()
+    I -> CO :2.opcionRegistrarPedido()\n5.buscarCliente(String dni)\n10.RegistrarPedido(List<Producto>productosSolicitados)\n17.pedidoConfirmado()
+    CO -> I :3.solicitarDatosCliente()\n8.mostrarCliente()\n14.mostrarFechaEntregaEstimada()\n15.solicitarConfirmarPedido()
+    CO -> CO :6.buscarClientePorDni(String dni)\n11.buscarFechasEntregaDisponible()
+    CO --> C :7.mostar(String dni)
+    CO --> P1 :new()
+    P1 --> DP1 :new()
+    CO --> P :12.buscarPendientesEntrega()
+    CO --> D :13.buscarDisponibilidada()
+
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml Registro-Pedidos
+
+actor ":Operadora" as O
+boundary ":interfazRegistrarPedido" as RP
+control ":ControladorPedido" as CP
+collections ":Distribuidos" as D
+collections ":Pedido" as P
+collections ":Cliente" as C
+entity ":p1:Pedido" as P1
+entity ":dep1:DetallePedido" as DP1
+
+O -> RP : 1.opcionRegistrarPedido()
+activate RP
+RP -> CP : 2.opcionRegistrarPedido()
+activate CP
+CP -> RP : 3.solicitarDatosCliente()
+O -> RP : 4.tomarDatosCliente()
+RP -> CP : 5.buscarCliente(String dni)
+CP -> CP : 6.buscarClientePorDni(String dni)
+CP -> C : 7.mostrar(String dni)
+CP -> RP : 8.mostrar(Cliente c)
+O -> RP : 9.tomarDatosPedidoPedido(List<Producto>productosSolicitados)
+RP -> CP : 10.RegistrarPedido(List<Producto>productosSolicitados)
+CP -> CP : 11.buscarFechasEntregaDisponible()
+CP -> P : 12.buscarPendienteEntrega()
+CP -> D : 13.buscarDisponibilidad()
+CP -> RP : 14.mostrarFechasEntregaEstimada()
+CP -> RP : 15.solicitarConfirmarPedido()
+O -> RP : 16.confirmarPedido()
+RP -> CP : 17.pedidoConfirmado()
+CP -> P1 : new()
+P1 -> DP1 : new()
+
+@enduml
