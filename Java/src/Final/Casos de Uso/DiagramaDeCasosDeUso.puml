@@ -1,0 +1,116 @@
+@startuml Casos-de-Uso
+
+actor Cliente as C
+actor Operadora as O
+actor Distribuidor as D
+actor Encargado_Admnistrativo as EA
+actor Contador as Co
+actor Presidente_Empresa as PE
+
+usecase CU1  as "Registrar Pedido"
+
+usecase CU2  as "Registrar Cliente"
+
+usecase CU3  as "Generar factura"
+
+usecase CU4 as "Confeccionar resumen"
+
+usecase CU5 as "Cancelar Pedido"
+
+usecase CU6 as "Registrar Pedidos Entregados"
+
+usecase CU7 as "Actualizar Precios"
+
+usecase CU8 as "Consultar Cliente"
+
+usecase CU9 as "Consultar Producto"
+
+usecase CU10 as "Consultar Pedido"
+
+
+
+note right of CU1
+    ..Datos necesarios..
+    Datos personales del cliente
+    Productos necesarios
+    ..Datos Generados..
+    El precio de cada producto
+    Monto total de pedido
+    Dia y hora aproximada de entrega
+
+end note
+
+O --> CU9
+
+O --> CU8
+
+CU1 <-- CU8 
+
+CU1 <-- CU9
+
+CU8 --> CU2
+
+CU2 -left-> C
+
+note right of CU2
+    Se registra el cliente con los datos obligatorios de la clase
+end note
+
+
+O --> CU3
+
+note right of CU3
+    ..Datos Necesarios..
+    Datos del Cliente
+    Datos de Pedido
+    Datos de Empleado
+end note
+
+EA --> CU6
+
+note right of CU6
+    ..Datos a Registrar..
+    Fecha y hora de entrega de cada pedido
+    Forma de pago
+    Datos de cheque y banco en caso de que corresponda
+    Observaciones si es necesario
+    ..Consideraciones adicionales..
+    Deja pendiente aquellos pedidos que no fueron
+    entregados para que se asignen al listado del siguiente dia
+end note
+
+CU6 --> CU4
+
+note right of CU4
+    ..Datos Necesarios..
+    Ingresos Percibidos
+end note
+
+O --> CU10
+
+CU10 --> CU5
+
+note right of CU5
+    ..Datos Necesarios..
+    Motivo Cancelacion
+    ..Consideraciones..
+    Si el pedido estaba asignado para entregar hoy
+    ..Acciones posteriores..
+    Notificar la cancelacion del pedido al distribuidor
+end note
+
+D <-up- CU5
+
+PE --> CU9
+
+CU9 --> CU7
+
+note right of CU7
+    ..Condiciones para el CU..
+    Ocurre cada un mes
+    El precio actual del producto
+    es distinto al precio nuevo
+end note
+
+CU4 --> Co
+@enduml
