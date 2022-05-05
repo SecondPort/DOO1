@@ -1,0 +1,82 @@
+
+' El estudio de abogados "Bolis & Soler” se dedica a la prestación de Servicios Judiciales pre-pagos. Para que un cliente pueda adherirse al servicio simplemente debe llegar a la oficina y
+' realizar el pedido de suscripción, entregando su documento para verificar sus datos, el administrativo registrará el nuevo cliente, y le informa que en ese momento puede abonar
+' la primer cuota por adelantado, sino tiene los 113 días siguientes para efectuar dicho pago; cualquiera sea la elección, el administrativo en el momento del pago siempre realiza
+' la emisión del recibo como constancia de pago entregándolo al cliente, y registrando el pago. Cuando un cliente necesita un asesoramiento jurídico se acerca hasta la oficina, y
+' realiza el pedido de un turno: inmediatamente se comprueba si el cliente esta al día con las cuotas, si por algún motivo el cliente adeudara alguna cuota se le da opción de pagar,
+' en el momento o volver otro día, en el caso que desee abonar en el momento, se procederá a realizar el cobro de la manera que se describió con anterioridad. Si el cliente está al día o
+' paga en el momento automáticamente se le otorga un turno con un abogado, caso contrario (no paga en el momento) no se realiza la asignación de ningún turno. Todos los días por la mañana
+' antes de comenzar cualquier actividad el administrativo emite un listado con todos los turnos de ese día, clasificándolos según los abogados y se lo envía al abogado que corresponda para que
+' pueda llevar adelante la consulta del cliente. Cada vez que un cliente se presenta a pagar la cuota mensual, el administrativo registra el pago y le emite un recibo. Cualquier instancia de pago
+' de las ya mencionadas, si el pago está fuera de la fecha entonces se efectúan los recargos correspondientes. Cuando el cliente se presenta al turno para plantear la situación, la cual puede
+' consistir en el inicio de un nuevo caso o en consultar el avance de un caso ya abierto y agregar detalles al mismo, el abogado procederá a abrir un expediente, si es la primer visita (es decir un nuevo caso),
+' el cual tendrá las características del caso y todos los antecedentes respectivos. Si el caso ya está abierto, el abogado consultará el caso cada vez que el cliente se presenta para recibir asesoramiento,
+' y si es necesario lo actualizara con información o novedades que presente el cliente. El abogado presenta el caso en el juzgado y a medida que el juzgado remite información sobre el estado y avance del caso,
+' el abogado irá efectuando una actualización sobre el mismo, y de ser necesario, además irá informando a su cliente cual es la situación en la que se encuentra y lo que está ocurriendo.
+
+' Realizar el diagrama de clases usando uml
+
+@startuml diagrama-de-clases
+class Cliente{
+    -nombre:String
+    -apellido:String
+    -dni:String
+    -fechaNacimiento:Date
+    -fechaIngreso:Date
+    -fechaUltimoPago:Date
+    -fechaUltimoTurno:Date
+    -fechaProximoTurno:Date
+    -turnos:List<Turno>
+    -pagos:List<Pago>
+    -expedientes:List<Expediente>
+}
+class Turno{
+    -fecha:Date
+    -hora:Date
+    -abogado:Abogado
+    -cliente:Cliente
+    -expediente:Expediente
+}
+class Pago{
+    -fecha:Date
+    -monto:Double
+    -cliente:Cliente
+}
+class Expediente{
+    -fechaInicio:Date
+    -fechaFin:Date
+    -estado:String
+    -cliente:Cliente
+    -abogado:Abogado
+    -turnos:List<Turno>
+}
+class Abogado{
+    -nombre:String
+    -apellido:String
+    -dni:String
+    -fechaNacimiento:Date
+    -fechaIngreso:Date
+    -turnos:List<Turno>
+    -expedientes:List<Expediente>
+}
+class Administrativo{
+    -nombre:String
+    -apellido:String
+    -dni:String
+    -fechaNacimiento:Date
+    -fechaIngreso:Date
+    -pagos:List<Pago>
+    -turnos:List<Turno>
+}
+class Recibo{
+    -fecha:Date
+    -monto:Double
+    -cliente:Cliente
+    -detalleRecibo:DetalleRecibo
+}
+class DetalleRecibo{
+    -fecha:Date
+    -monto:Double
+    -cliente:Cliente
+}
+@enduml
