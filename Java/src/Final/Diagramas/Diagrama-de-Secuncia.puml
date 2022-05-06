@@ -19,7 +19,7 @@ RP -> CP : 5.buscarCliente(String dni)
 CP -> CP : 6.buscarClientePorDni(String dni)
 CP -> C : 7.mostrar(String dni)
 activate C
-C --> CP : done
+C --> CP : C:cliente
 deactivate C
 CP -> RP : 8.mostrar(Cliente c)
 O -> RP : 9.tomarDatosPedidoPedido(List<Producto>productosSolicitados)
@@ -27,10 +27,12 @@ RP -> CP : 10.RegistrarPedido(List<Producto>productosSolicitados)
 CP -> CP : 11.buscarFechasEntregaDisponible()
 CP -> P : 12.buscarPendienteEntrega()
 activate P
-destroy P
+P --> CP : list<pedido>Lista_Pendientes
+deactivate P
 CP -> D : 13.buscarDisponibilidad()
 activate D
-destroy D
+D --> CP : list<distribuidor>Lista_Disponibles
+deactivate D
 CP -> RP : 14.mostrarFechasEntregaEstimada()
 CP -> RP : 15.solicitarConfirmarPedido()
 O -> RP : 16.confirmarPedido()
