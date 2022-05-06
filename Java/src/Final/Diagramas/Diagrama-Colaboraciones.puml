@@ -4,20 +4,20 @@
     boundary ":InterfazRegistrarPedido" as I
     control ":ControladorPedido" as CO
     collections ":Pedido" as P
-    collections ":Distribuidos" as D
+    collections ":Distribuidores" as D
     collections ":Cliente" as C
     entity "p1:Pedido" as P1
     entity "dp1:DetallePedido" as DP1
 
-    O -> I :1.opcionRegistrarPedido()\n4.tomarDatosCliente()\n9.tomarDatosPedido(List<Producto>productosSolicitados)\n16.confirmarPedido()
-    I -> CO :2.opcionRegistrarPedido()\n5.buscarCliente(String dni)\n10.RegistrarPedido(List<Producto>productosSolicitados)\n17.pedidoConfirmado()
-    CO -> I :3.solicitarDatosCliente()\n8.mostrarCliente()\n14.mostrarFechaEntregaEstimada()\n15.solicitarConfirmarPedido()
-    CO -> CO :6.buscarClientePorDni(String dni)\n11.buscarFechasEntregaDisponible()
-    CO --> C :7.mostar(String dni)
+    O -> I :1.opcionRegistrarPedido()\n4.tomarDatosCliente()\n8.tomarDatosPedido(List<Producto>productosSolicitados)\n15.confirmarPedido()
+    I -> CO :2.opcionRegistrarPedido()\n5.buscarCliente(String dni)\n9.RegistrarPedido(List<Producto>productosSolicitados)\n16.pedidoConfirmado()
+    CO -> I :3.solicitarDatosCliente()\n7.mostrarCliente()\n13.mostrarFechaEntregaEstimada()\n14.solicitarConfirmarPedido()
+    CO -> CO :6.buscarClientePorDni(String dni)\n10.buscarFechasEntregaDisponible()
+    CO --> C
     CO --> P1 :new()
     P1 --> DP1 :new()
-    CO --> P :12.buscarPendientesEntrega()
-    CO --> D :13.buscarDisponibilidada()
+    CO --> P :11.buscarPendientesEntrega()
+    CO --> D :12.buscarDisponibilidada()
 
 
 @enduml
